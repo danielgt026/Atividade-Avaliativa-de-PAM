@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MysticPartyTracker.Views.SpellsView"
+             Title="SpellsView">
+    <VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Result}" EmptyView="Nenhum dado carregado, Aperte o botão para carregar dados">
+        <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        Text="Count"/>
+                    <Label
+                        Text="{Binding Count}"/>
+                    <Label
+                        Text="Index"/>
+                    <Label
+                        Text="{Binding Index}"/>
+                    <Label
+                        Text="Name"/>
+                    <Label
+                        Text="{Binding Name}"/>
+                    <Label
+                        Text="Level"/>
+                    <Label
+                        Text="{Binding Level}"/>
+                    <Label
+                        Text="Url"/>
+                    <Label
+                        Text="{Binding Url}"/>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button 
+            Text="Buscar Spells"
+            Command="{Binding GetResultAsyncCommand}"/>  
+    </VerticalStackLayout>
+</ContentPage>

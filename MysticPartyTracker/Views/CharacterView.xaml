@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MysticPartyTracker.Views.CharacterView"
+             Title="CharacterView">
+    <ScrollView>
+
+        <Grid RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto, auto" 
+                ColumnDefinitions="*, *">
+
+            <Label
+                    Text="nivel:"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    />
+
+            <Entry
+                Text="{Binding Lvl}"
+                        x:Name="Nivel"
+                        SemanticProperties.Hint="Nivel"
+                        MaxLength="2" 
+                        WidthRequest="50"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                    />
+
+
+            <Label
+                        Text="Nome do Personagem"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        WidthRequest="500"
+                        />
+
+
+            <Entry
+                Text="{Binding Name}"
+                        x:Name="NameEntry"
+                        Placeholder="Digite seu nome"
+                        SemanticProperties.Hint="Type your name here"
+                         WidthRequest="500"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                    />
+
+
+            <Picker
+                SelectedItem="{Binding Classe}"
+                x:Name="ClassCharacter"
+                Title="Classe do Personagem"
+                WidthRequest="500"
+                Grid.Row="3"
+                Grid.Column="0">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Guerreiro</x:String>
+                        <x:String>Padino</x:String>
+                        <x:String>Assasino</x:String>
+                        <x:String>Arqueiro</x:String>
+                        <x:String>Mago</x:String>
+                        <x:String>Barbaro</x:String>
+                        <x:String>Mago</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+
+            <Picker
+                SelectedItem="{Binding Raca}"
+                x:Name="BreedCharacter"
+                Title="Raça do Personagem"
+                WidthRequest="500"
+                HorizontalOptions="Center"
+                Grid.Row="4"
+                Grid.Column="0">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Humano</x:String>
+                        <x:String>Anão</x:String>
+                        <x:String>Elfo</x:String>
+                        <x:String>Orc</x:String>
+                        <x:String>Vampiro</x:String>
+                        <x:String>Demonio</x:String>
+                        <x:String>Supremo</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+
+
+            <Button
+                Command="{Binding CreateCharacterCommand}"
+                x:Name="Criar_Btn"
+                Text="Criar Personagem"
+                WidthRequest="200"
+                TextColor="White"
+                BackgroundColor="Black"
+                Grid.Row="7"
+                Grid.Column="0"/>
+
+            <CollectionView ItemsSource="{Binding Character}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Lvl}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        <Label Text="{Binding Classe}"/>
+                        <Label Text="{Binding Raca}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MysticPartyTracker.Views.DiceView"
+             Title="DiceView">
+    <ScrollView>
+        <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+
+            <Label
+                Text=""
+                x:Name="ResultLabel"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                FontAttributes="Bold"
+                TextColor="Black"
+             />
+
+            <Label
+                Text="{Binding Total}"
+                x:Name="ResultadoSoma"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                FontAttributes="Bold"
+                TextColor="Black"
+                />
+
+            <CollectionView ItemsSource="{Binding Rolls}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding}"
+                                   />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Picker x:Name="Dados"
+                Title="Selecionar quantidade de Dados"
+                    SelectedItem="{Binding Quantity}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:Int32}">
+                        <x:Int32>2</x:Int32>
+                        <x:Int32>4</x:Int32>
+                        <x:Int32>6</x:Int32>
+                        <x:Int32>8</x:Int32>
+                        <x:Int32>100</x:Int32>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Picker x:Name="Lados"
+                Title="Selecionar quantidade de Lados"
+                    SelectedItem="{Binding NumberSides}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:Int32}">
+                        <x:Int32>2</x:Int32>
+                        <x:Int32>4</x:Int32>
+                        <x:Int32>8</x:Int32>
+                        <x:Int32>12</x:Int32>
+                        <x:Int32>20</x:Int32>
+                        <x:Int32>100</x:Int32>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button
+            x:Name="RollBtn"
+            Text="ROLAR O DADO" 
+            BackgroundColor="Black"
+            Command="{Binding RollCommand}"
+            />
+            
+            
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
